@@ -14,8 +14,7 @@ public class Autonomous extends Command {
 
 	@Override
 	protected void execute() {
-		Robot.driveTrain.driveStraightToDistance(-50);
-		
+		Robot.driveTrain.driveStraightToDistance(-24);
 		/*if(Robot.driveTrain.gyroValue() != 0){
 			if(Robot.driveTrain.gyroValue() < 0){
 				Robot.driveTrain.MecanumDrive(-0.07, -0.3, -0.07);
@@ -55,7 +54,7 @@ public class Autonomous extends Command {
 		*/
 
 		
-		SmartDashboard.putNumber("Encoder", Robot.driveTrain.logDrive());
+		SmartDashboard.putNumber("Encoder", Robot.driveTrain.encoderValue());
 	}
 
 	@Override

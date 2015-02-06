@@ -1,10 +1,11 @@
 package org.usfirst.frc.team2145.robot.subsystems;
 
-import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.command.PIDSubsystem;
+
 import edu.wpi.first.wpilibj.TalonSRX;
 import edu.wpi.first.wpilibj.Gyro;
 import edu.wpi.first.wpilibj.Encoder;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+
 import edu.wpi.first.wpilibj.PIDController;
 import edu.wpi.first.wpilibj.PIDOutput;
 import edu.wpi.first.wpilibj.PIDSource;
@@ -14,7 +15,7 @@ import org.usfirst.frc.team2145.robot.RobotMap;
 import org.usfirst.frc.team2145.robot.commands.DriveWithController;
 
 
-public class DriveTrain extends Subsystem{
+public class DriveTrain extends PIDSubsystem{
 	
 	TalonSRX frontRightWheel = new TalonSRX(RobotMap.frontRightWheel);
 	TalonSRX frontLeftWheel = new TalonSRX(RobotMap.frontLeftWheel);
@@ -31,12 +32,32 @@ public class DriveTrain extends Subsystem{
 	PIDOutput ePIDOutput;
 	
 	
+	public DriveTrain() {
+		super("DriveTrain", 2, 0, 0);
+		setAbsoluteTolerance(0.05);
+		getPIDController().setContinuous(false);
+		
+	}
 	
 	
 	public void initDefaultCommand() {
         // Set the default command for a subsystem here.
        setDefaultCommand(new DriveWithController());
     }
+	
+
+	
+	protected double returnPIDInput(){
+		return (backRightEncoder.getDistance() + backLeftEncoder.getDistance() / 2);
+	} 
+	
+	protected void usePIDOutput(double output){
+		
+		frontRightWheel.pidWrite(output);
+		frontLeftWheel.pidWrite(output);
+		backRightWheel.pidWrite(output);
+		backLeftWheel.pidWrite(output);
+	}
 	
 	public void MecanumDrive (double X,double Y,double Z) {
 	   
@@ -68,7 +89,7 @@ public class DriveTrain extends Subsystem{
 		//Sends Data to Talons
 	}
 	
-	@SuppressWarnings("deprecation")
+	
 	public double logDrive(){
 		double encoderAverage = (backRightEncoder.getDistance() + backLeftEncoder.getDistance()) / 2;
 		encoderAverage= (encoderAverage /(8 * Math.PI));
@@ -87,22 +108,16 @@ public class DriveTrain extends Subsystem{
 	}
 	public double encoderValue(){
 		double encoderAverage = (backRightEncoder.getDistance() + backLeftEncoder.getDistance()) / 2;
-		encoderAverage= (encoderAverage /(8 * Math.PI));
+		encoderAverage = (encoderAverage /(8 * Math.PI));
 		return encoderAverage;
 	}
 	public void driveStraightToDistance(double distance){
-		double eP = 0;
-		double eI = 0;
-		double eD = 0;
-		double ePIDSpeed = 0;
-		
-		ePIDSource.equals(encoderValue());
-		ePIDOutput.equals(ePIDSpeed);
-		encoderPID = new PIDController(eP,eI,eD,distance,ePIDSource,ePIDOutput );
-		encoderPID.enable();
-		
-		ePIDOutput.pidWrite(ePIDSpeed);
-		MecanumDrive (0,ePIDSpeed,0);
+		if(Robot.driveTrain.encoderValue() > distance){
+			Robot.driveTrain.usePIDOutput(-0.3);
+		}
+		else{
+			Robot.driveTrain.usePIDOutput(0);
+		}
 		
 	}
 	
