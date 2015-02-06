@@ -36,9 +36,7 @@ public class Robot extends IterativeRobot {
 		oi = new OI();
         // instantiate the command used for the autonomous period
         autonomousCommand = new Autonomous();
-        CameraServer camera = new CameraServer();
-        camera.setQuality(50);
-        camera.startAutomaticCapture("cam1");
+       
     }
 	
 	public void disabledPeriodic() {
