@@ -2,29 +2,20 @@ package org.usfirst.frc.team2145.robot.commands;
 
 import org.usfirst.frc.team2145.robot.Robot;
 import edu.wpi.first.wpilibj.command.Command;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
-public class DriveWithController extends Command {
-	public DriveWithController() {
+public class ExtendWithController extends Command{
+	public ExtendWithController() {
         // Use requires() here to declare subsystem dependencies
-        requires(Robot.driveTrain);
+        requires(Robot.slide);
     }
 
-	// Called just before this Command runs the first time
+    // Called just before this Command runs the first time
     protected void initialize() {
-    	Robot.driveTrain.encoderReset();
-    	Robot.driveTrain.gyroReset();
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.driveTrain.MecanumDrive(Robot.oi.StickX(), Robot.oi.StickY(), Robot.oi.StickZ());
-    	SmartDashboard.putNumber("X Value", Robot.oi.StickX());
-    	SmartDashboard.putNumber("Y Value", Robot.oi.StickY());
-    	SmartDashboard.putNumber("Z Value", Robot.oi.StickZ());
-		SmartDashboard.putNumber("Gyro", Robot.driveTrain.gyroValue());
-    	Robot.driveTrain.log();
-    	
+    	Robot.slide.extendWithController(Robot.oi.Stick2Y2());
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -40,4 +31,5 @@ public class DriveWithController extends Command {
     // subsystems is scheduled to run
     protected void interrupted() {
     }
+
 }

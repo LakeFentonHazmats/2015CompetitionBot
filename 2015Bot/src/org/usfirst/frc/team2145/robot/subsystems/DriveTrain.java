@@ -13,6 +13,7 @@ import edu.wpi.first.wpilibj.PIDSource;
 import org.usfirst.frc.team2145.robot.Robot;
 import org.usfirst.frc.team2145.robot.RobotMap;
 import org.usfirst.frc.team2145.robot.commands.DriveWithController;
+import edu.wpi.first.wpilibj.smartdashboard.*;
 
 
 public class DriveTrain extends PIDSubsystem{
@@ -24,12 +25,15 @@ public class DriveTrain extends PIDSubsystem{
 	
 	Encoder backRightEncoder = new Encoder(RobotMap.backRightEncoder1,RobotMap.backRightEncoder2);
 	Encoder backLeftEncoder= new Encoder(RobotMap.backLeftEncoder1,RobotMap.backLeftEncoder2);
+	Encoder liftEncoder = new Encoder(RobotMap.liftEncoder1, RobotMap.liftEncoder2);
 	
 	Gyro gyro = new Gyro(RobotMap.driveGyro);
 	
 	PIDController encoderPID;
 	PIDSource ePIDSource;
 	PIDOutput ePIDOutput;
+	
+	
 	
 	
 	public DriveTrain() {
@@ -96,6 +100,11 @@ public class DriveTrain extends PIDSubsystem{
 		return encoderAverage;
 		
 	}
+	public void log(){
+		SmartDashboard.putNumber("Encoder", encoderValue());
+		SmartDashboard.putNumber("Lift Encoder", liftEncoder.getDistance());
+	}
+
 	public void encoderReset(){
 		backRightEncoder.reset();
 		backLeftEncoder.reset();
