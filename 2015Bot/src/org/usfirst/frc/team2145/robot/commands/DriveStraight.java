@@ -10,14 +10,14 @@ public class DriveStraight extends Command {
 	private PIDController pid;
 	public DriveStraight(double distance) {
         requires(Robot.driveTrain);
-        pid = new PIDController(0.5, 0, 0,
+        pid = new PIDController(0.666, 0, 0,
                 new PIDSource() { public double pidGet() {
                     return Robot.driveTrain.encoderValue();
                 }},
                 new PIDOutput() { public void pidWrite(double d) {
                     Robot.driveTrain.MecanumDrive(0, d * 0.25, 0);;
                 }});
-        pid.setAbsoluteTolerance(0.01);
+        pid.setAbsoluteTolerance(1);
         pid.setSetpoint(distance);
     }
 

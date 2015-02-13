@@ -23,8 +23,8 @@ public class RobotMap {
 	    public static int backLeftEncoder2 = 1;
 	    public static int backRightEncoder1 = 2;
 	    public static int backRightEncoder2 = 3;
-	    public static int liftEncoder1 = 4;
-	    public static int liftEncoder2 = 5;
+	    public static int liftEncoder1 = 6;
+	    public static int liftEncoder2 = 7;
 	    public static int extendBackSwitch = 6;
 	    public static int extendFrontSwitch = 7;
 	    public static int rightFrontEncoder1 = 8;

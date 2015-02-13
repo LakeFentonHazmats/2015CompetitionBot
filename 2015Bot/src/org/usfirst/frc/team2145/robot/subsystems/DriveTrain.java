@@ -25,7 +25,7 @@ public class DriveTrain extends PIDSubsystem{
 	
 	Encoder backRightEncoder = new Encoder(RobotMap.backRightEncoder1,RobotMap.backRightEncoder2);
 	Encoder backLeftEncoder= new Encoder(RobotMap.backLeftEncoder1,RobotMap.backLeftEncoder2);
-	Encoder liftEncoder = new Encoder(RobotMap.liftEncoder1, RobotMap.liftEncoder2);
+	//Encoder liftEncoder = new Encoder(RobotMap.liftEncoder1, RobotMap.liftEncoder2);
 	
 	Gyro gyro = new Gyro(RobotMap.driveGyro);
 	
@@ -102,7 +102,7 @@ public class DriveTrain extends PIDSubsystem{
 	}
 	public void log(){
 		SmartDashboard.putNumber("Encoder", encoderValue());
-		SmartDashboard.putNumber("Lift Encoder", liftEncoder.getDistance());
+		//SmartDashboard.putNumber("Lift Encoder", liftEncoder.getDistance());
 	}
 
 	public void encoderReset(){
@@ -117,7 +117,7 @@ public class DriveTrain extends PIDSubsystem{
 	}
 	public double encoderValue(){
 		double encoderAverage = (backRightEncoder.getDistance() + backLeftEncoder.getDistance()) / 2;
-		encoderAverage = (encoderAverage /(8 * Math.PI));
+		
 		return encoderAverage;
 	}
 	public void driveStraightToDistance(double distance){
@@ -129,7 +129,9 @@ public class DriveTrain extends PIDSubsystem{
 		}
 		
 	}
-	
+	public void liftEncoderReset(){
+		//liftEncoder.reset();
+	}
 		
 	
 	

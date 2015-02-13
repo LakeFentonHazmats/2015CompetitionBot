@@ -14,6 +14,8 @@ public class DriveWithController extends Command {
     protected void initialize() {
     	Robot.driveTrain.encoderReset();
     	Robot.driveTrain.gyroReset();
+    	Robot.lift.liftEncoderReset();
+    	
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -23,6 +25,7 @@ public class DriveWithController extends Command {
     	SmartDashboard.putNumber("Y Value", Robot.oi.StickY());
     	SmartDashboard.putNumber("Z Value", Robot.oi.StickZ());
 		SmartDashboard.putNumber("Gyro", Robot.driveTrain.gyroValue());
+		SmartDashboard.putNumber("Lift Encoder", Robot.lift.liftEncoder());
     	Robot.driveTrain.log();
     	
     }

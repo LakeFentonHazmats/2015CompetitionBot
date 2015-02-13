@@ -21,11 +21,11 @@ import org.usfirst.frc.team2145.robot.subsystems.Slide;
  */
 public class Robot extends IterativeRobot {
 
-	public static final ExampleSubsystem exampleSubsystem = new ExampleSubsystem();
-	public static final DriveTrain driveTrain = new DriveTrain();
+	public static ExampleSubsystem exampleSubsystem = new ExampleSubsystem();
+	public static DriveTrain driveTrain;
 	public static OI oi;
-	public static final Lift lift = new Lift();
-	public static final Slide slide = new Slide();
+	public static Lift lift;
+	public static Slide slide;
 	
 	
     Command autonomousCommand;
@@ -35,6 +35,9 @@ public class Robot extends IterativeRobot {
      * used for any initialization code.
      */
     public void robotInit() {
+    	driveTrain = new DriveTrain();
+    	lift = new Lift();
+    	slide = new Slide();
 		oi = new OI();
         // instantiate the command used for the autonomous period
         autonomousCommand = new Autonomous();
