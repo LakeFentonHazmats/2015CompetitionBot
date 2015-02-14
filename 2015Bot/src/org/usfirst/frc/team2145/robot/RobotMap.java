@@ -34,6 +34,7 @@ public class RobotMap {
 	    
 	    //Analog
 	    public static int driveGyro = 0;
+	    public static int liftHomeSwitch = 1;
 	    //public static int  = 1;
 	    //public static int  = 2;
 	    //public static int  = 3;
