@@ -15,10 +15,21 @@ public class DriveStraight extends Command {
                     return Robot.driveTrain.encoderValue();
                 }},
                 new PIDOutput() { public void pidWrite(double d) {
-                    Robot.driveTrain.MecanumDrive(0, d * 0.25, 0);;
+                    Robot.driveTrain.MecanumDrive(0, d, 0);;
+                    pid.setOutputRange(-0.25, 0.25);
+                    /*if(Robot.driveTrain.gyroValue()!= 0){
+                    	if(Robot.driveTrain.gyroValue() > 90){
+                    		Robot.driveTrain.MecanumDrive(0, d * 0.25, -0.3);
+                    	}
+                    	if(Robot.driveTrain.gyroValue() < 90){
+                    		Robot.driveTrain.MecanumDrive(0, d * 0.25, 0.3);
+                    	}
+                    }*/
                 }});
-        pid.setAbsoluteTolerance(1);
+        pid.setAbsoluteTolerance(10);
+        
         pid.setSetpoint(distance);
+        
     }
 
 	@Override
@@ -26,19 +37,16 @@ public class DriveStraight extends Command {
 		Robot.driveTrain.encoderReset();;
     	pid.reset();
         pid.enable();
-		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
 	protected void execute() {
-		// TODO Auto-generated method stub
-		
+				
 	}
 
 	@Override
 	protected boolean isFinished() {
-		// TODO Auto-generated method stub
 		return pid.onTarget();
 	}
 
@@ -46,15 +54,13 @@ public class DriveStraight extends Command {
 	protected void end() {
 		pid.disable();
         Robot.driveTrain.MecanumDrive(0, 0, 0);
-		// TODO Auto-generated method stub
+		
 		
 	}
 
 	@Override
 	protected void interrupted() {
 		end();
-		// TODO Auto-generated method stub
-		
 	}
 
 }

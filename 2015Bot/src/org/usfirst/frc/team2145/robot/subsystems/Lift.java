@@ -36,7 +36,9 @@ public class Lift extends PIDSubsystem {
 		liftMotor.set(output);
 	}
 	public double liftEncoder(){
-		return liftEncoder.getDistance();
+		double liftEncoderAverage = liftEncoder.getDistance();
+		liftEncoderAverage = (liftEncoderAverage / 53.700085025134623129819955548263);
+		return (liftEncoderAverage);
 	}
 	public void liftEncoderReset(){
 		liftEncoder.reset();

@@ -5,8 +5,8 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class Autonomous extends CommandGroup {
 
 	public Autonomous() {
-    	//addSequential(new DriveStraight(-100));
-    	addSequential(new LiftToDistance(50));
+    	addSequential(new DriveStraight(-100));
+    	addSequential(new Turn(90));
+    	addSequential(new DriveStraight(100));
 	}
-
 }
