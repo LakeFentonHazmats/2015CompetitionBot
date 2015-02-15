@@ -7,6 +7,6 @@ public class Autonomous extends CommandGroup {
 	public Autonomous() {
     	addSequential(new DriveStraight(-100));
     	addSequential(new Turn(90));
-    	addSequential(new DriveStraight(100));
+    	addSequential(new LiftToTop());
 	}
 }

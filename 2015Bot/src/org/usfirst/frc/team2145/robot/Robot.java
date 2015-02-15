@@ -12,6 +12,7 @@ import org.usfirst.frc.team2145.robot.subsystems.ExampleSubsystem;
 import org.usfirst.frc.team2145.robot.subsystems.Lift;
 import org.usfirst.frc.team2145.robot.subsystems.Slide;
 
+
 /**
  * The VM is configured to automatically run this class, and to call the
  * functions corresponding to each mode, as described in the IterativeRobot
@@ -29,7 +30,7 @@ public class Robot extends IterativeRobot {
 	
 	
     Command autonomousCommand;
-
+    
     /**
      * This function is run when the robot is first started up and should be
      * used for any initialization code.
@@ -41,7 +42,7 @@ public class Robot extends IterativeRobot {
 		oi = new OI();
         // instantiate the command used for the autonomous period
         autonomousCommand = new Autonomous();
-       
+        
     }
 	
 	public void disabledPeriodic() {
@@ -84,6 +85,7 @@ public class Robot extends IterativeRobot {
     public void teleopPeriodic() {
         Scheduler.getInstance().run();
         log();
+        
     }
     
     /**

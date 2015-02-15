@@ -29,12 +29,15 @@ public class RobotMap {
 	    public static int extendFrontSwitch = 7;
 	    public static int rightFrontEncoder1 = 8;
 	    public static int rightFrontEncoder2 = 9;
+	    
+	    public static int liftHomeSwitch1 = 10;
+	    public static int liftHomeSwitch2 = 11;
+	    public static int extendSwitch = 12;
 	    //public static int rightBackEncoder2 = 10;
 	    //public static int rightBackEncoder2 = 11;
 	    
 	    //Analog
-	    public static int driveGyro = 0;
-	    public static int liftHomeSwitch = 1;
+	    public static int driveGyro = 1;
 	    //public static int  = 1;
 	    //public static int  = 2;
 	    //public static int  = 3;

@@ -2,7 +2,7 @@ package org.usfirst.frc.team2145.robot.subsystems;
 
 
 import edu.wpi.first.wpilibj.command.PIDSubsystem;
-import edu.wpi.first.wpilibj.AnalogInput;
+import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.TalonSRX;
 
@@ -12,7 +12,7 @@ public class Lift extends PIDSubsystem {
 	
 	TalonSRX liftMotor = new TalonSRX(RobotMap.liftMotor);
 	Encoder liftEncoder = new Encoder(RobotMap.liftEncoder1, RobotMap.liftEncoder2);
-	AnalogInput homeSwitch = new AnalogInput(RobotMap.liftHomeSwitch);
+	DigitalInput homeSwitch = new DigitalInput(RobotMap.liftHomeSwitch1);
 
 	@Override
 	protected void initDefaultCommand() {
@@ -45,7 +45,7 @@ public class Lift extends PIDSubsystem {
 		liftEncoder.reset();
 	}
 	public double homeSwitchValue(){
-		return homeSwitch.getValue();
+		return homeSwitch.getChannel();
 	}
 	
 }

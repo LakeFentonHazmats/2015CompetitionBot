@@ -96,7 +96,7 @@ public class DriveTrain extends PIDSubsystem{
 	
 	public double logDrive(){
 		double encoderAverage = backLeftEncoder.getDistance();
-		//encoderAverage= (encoderAverage /14.331210191082802547770700636943);
+		encoderAverage= (encoderAverage /14.331210191082802547770700636943);
 		return encoderAverage;
 		
 	}
@@ -116,8 +116,8 @@ public class DriveTrain extends PIDSubsystem{
 		gyro.reset();
 	}
 	public double encoderValue(){
-		double encoderAverage = backRightEncoder.getDistance();
-		//encoderAverage= (encoderAverage /14.331210191082802547770700636943);
+		double encoderAverage = ((backRightEncoder.getDistance() + backLeftEncoder.getDistance()) /2);
+		encoderAverage= (encoderAverage /14.331210191082802547770700636943);
 		return encoderAverage;
 	}		
 	public void driveStraightToDistance(double distance){
