@@ -1,6 +1,8 @@
 package org.usfirst.frc.team2145.robot;
 
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.buttons.Button;
+import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
 
 /**
@@ -10,7 +12,7 @@ import edu.wpi.first.wpilibj.Joystick;
 public class OI {
 	Joystick stick = new Joystick(0);
 	Joystick stick2 = new Joystick(1);
-	
+	Button button = new JoystickButton(stick, 1);
 	
 	
 	

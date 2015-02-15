@@ -27,6 +27,7 @@ public class DriveWithController extends Command {
 		SmartDashboard.putNumber("Gyro", Robot.driveTrain.gyroValue());
 		SmartDashboard.putNumber("Lift Encoder", Robot.lift.liftEncoder());
 		SmartDashboard.putBoolean("Does the robot have a tote/container?", Robot.slide.doesExtenderHaveTote());
+		SmartDashboard.putNumber("Left Encoder", Robot.driveTrain.leftEncoderValue());
     	Robot.driveTrain.log();
     	
     }

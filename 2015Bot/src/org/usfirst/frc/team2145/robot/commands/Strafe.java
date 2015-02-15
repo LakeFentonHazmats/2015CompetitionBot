@@ -7,16 +7,16 @@ import edu.wpi.first.wpilibj.PIDOutput;
 import edu.wpi.first.wpilibj.PIDSource;
 import edu.wpi.first.wpilibj.command.Command;
 
-public class Turn extends Command{
+public class Strafe extends Command{
 	private PIDController pid;
-	public Turn(double angle){
+	public Strafe(double distance){
 		requires(Robot.driveTrain);
-        pid = new PIDController(0.666, 0, 0,
+		pid = new PIDController(0.666, 0, 0,
                 new PIDSource() { public double pidGet() {
-                    return Robot.driveTrain.gyroValue();
+                    return Robot.driveTrain.leftEncoderValue();
                 }},
                 new PIDOutput() { public void pidWrite(double d) {
-                    Robot.driveTrain.MecanumDrive(0, 0, d);;
+                    Robot.driveTrain.MecanumDrive(d, 0, 0);;
                     pid.setOutputRange(-0.25, 0.25);
                     /*if(Robot.driveTrain.gyroValue()!= 0){
                     	if(Robot.driveTrain.gyroValue() > 90){
@@ -27,31 +27,28 @@ public class Turn extends Command{
                     	}
                     }*/
                 }});
-        pid.setPercentTolerance(1);
+        pid.setAbsoluteTolerance(0.01);
         
-        pid.setSetpoint(angle);
+        pid.setSetpoint(distance);
 	}
-	
 	@Override
 	protected void initialize() {
-		Robot.driveTrain.gyroReset();
 		Robot.driveTrain.encoderReset();
-		
 	}
-	
+
 	@Override
 	protected void execute() {
 		
 	}
-
+	
 	@Override
-	protected boolean isFinished() {
+	protected boolean isFinished() {	
 		return pid.onTarget();
 	}
 
 	@Override
 	protected void end() {
-		
+		pid.disable();
 	}
 
 	@Override
