@@ -1,7 +1,6 @@
 package org.usfirst.frc.team2145.robot.commands;
 
 import org.usfirst.frc.team2145.robot.Robot;
-
 import edu.wpi.first.wpilibj.PIDController;
 import edu.wpi.first.wpilibj.PIDOutput;
 import edu.wpi.first.wpilibj.PIDSource;
@@ -20,10 +19,10 @@ public class Strafe extends Command{
                     pid.setOutputRange(-0.25, 0.25);
                     /*if(Robot.driveTrain.gyroValue()!= 0){
                     	if(Robot.driveTrain.gyroValue() > 90){
-                    		Robot.driveTrain.MecanumDrive(0, d * 0.25, -0.3);
+                    		Robot.driveTrain.MecanumDrive(d, 0, -0.3);
                     	}
                     	if(Robot.driveTrain.gyroValue() < 90){
-                    		Robot.driveTrain.MecanumDrive(0, d * 0.25, 0.3);
+                    		Robot.driveTrain.MecanumDrive(d, 0, 0.3);
                     	}
                     }*/
                 }});

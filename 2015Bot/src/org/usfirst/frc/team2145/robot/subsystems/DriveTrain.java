@@ -136,7 +136,7 @@ public class DriveTrain extends PIDSubsystem{
 	}
 	
 	public double leftEncoderValue(){
-		return backLeftEncoder.getDistance();
+		return backLeftEncoder.getDistance() / 14.331210191082802547770700636943;
 	}
 	
 	public double rightEncoderValue(){

@@ -19,14 +19,14 @@ public class DriveStraight extends Command {
                     pid.setOutputRange(-0.25, 0.25);
                     /*if(Robot.driveTrain.gyroValue()!= 0){
                     	if(Robot.driveTrain.gyroValue() > 90){
-                    		Robot.driveTrain.MecanumDrive(0, d * 0.25, -0.3);
+                    		Robot.driveTrain.MecanumDrive(0, d, -0.3);
                     	}
                     	if(Robot.driveTrain.gyroValue() < 90){
-                    		Robot.driveTrain.MecanumDrive(0, d * 0.25, 0.3);
+                    		Robot.driveTrain.MecanumDrive(0, d, 0.3);
                     	}
                     }*/
                 }});
-        pid.setAbsoluteTolerance(10);
+        pid.setAbsoluteTolerance(1);
         
         pid.setSetpoint(distance);
         

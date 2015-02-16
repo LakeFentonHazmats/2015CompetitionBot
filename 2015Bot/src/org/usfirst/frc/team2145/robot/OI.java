@@ -36,7 +36,9 @@ public class OI {
 	public double StickZ () {
 		return stick.getRawAxis(2) - stick.getRawAxis(3);
 	} 
-	
+	public double StickY2(){
+		return stick.getRawAxis(5);
+	}
 	
     //// CREATING BUTTONS
     // One type of button is a joystick button which is any button on a joystick.

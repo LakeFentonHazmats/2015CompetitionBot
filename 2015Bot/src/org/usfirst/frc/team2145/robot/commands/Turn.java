@@ -18,14 +18,6 @@ public class Turn extends Command{
                 new PIDOutput() { public void pidWrite(double d) {
                     Robot.driveTrain.MecanumDrive(0, 0, d);;
                     pid.setOutputRange(-0.25, 0.25);
-                    /*if(Robot.driveTrain.gyroValue()!= 0){
-                    	if(Robot.driveTrain.gyroValue() > 90){
-                    		Robot.driveTrain.MecanumDrive(0, d * 0.25, -0.3);
-                    	}
-                    	if(Robot.driveTrain.gyroValue() < 90){
-                    		Robot.driveTrain.MecanumDrive(0, d * 0.25, 0.3);
-                    	}
-                    }*/
                 }});
         pid.setPercentTolerance(1);
         

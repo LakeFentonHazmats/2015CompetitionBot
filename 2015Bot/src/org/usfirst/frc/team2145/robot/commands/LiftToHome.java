@@ -5,7 +5,10 @@ import org.usfirst.frc.team2145.robot.Robot;
 import edu.wpi.first.wpilibj.command.Command;
 
 public class LiftToHome extends Command{
-
+	public LiftToHome() {
+        
+        requires(Robot.lift);
+    }
 	@Override
 	protected void initialize() {
 		Robot.lift.liftEncoderReset();
