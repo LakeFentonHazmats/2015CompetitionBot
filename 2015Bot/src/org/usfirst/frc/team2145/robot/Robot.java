@@ -7,6 +7,7 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 
 import org.usfirst.frc.team2145.robot.commands.Autonomous;
+import org.usfirst.frc.team2145.robot.subsystems.Arms;
 import org.usfirst.frc.team2145.robot.subsystems.DriveTrain;
 import org.usfirst.frc.team2145.robot.subsystems.ExampleSubsystem;
 import org.usfirst.frc.team2145.robot.subsystems.Lift;
@@ -27,7 +28,7 @@ public class Robot extends IterativeRobot {
 	public static OI oi;
 	public static Lift lift;
 	public static Slide slide;
-	
+	public static Arms arm;
 	
     Command autonomousCommand;
     
